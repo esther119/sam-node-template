@@ -125,3 +125,9 @@ Next, you can use AWS Serverless Application Repository to deploy ready to use A
    3. Run my container: `docker run --platform linux/amd64 -it helloworldfunction:nodejs18.x-v1`
 2. Invoke functions:
    1. Pick specific functions: `sam local invoke MyFunction`
+3. zip vs image
+   1. I think the helloworld is using docker image, but myfunction is using zip images. What is the difference between the two?
+4. Functions
+   1. Helloworld function can do post:`https://0xbpy28l6l.execute-api.us-east-1.amazonaws.com/Prod/`
+   2. My functions: test succeed on aws but cannot curl it. Is my API correct? or I curl it incorrectly?
+5.
