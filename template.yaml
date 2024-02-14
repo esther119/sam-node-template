@@ -27,6 +27,19 @@ Resources:
       DockerTag: nodejs18.x-v1
       DockerContext: ./hello-world
       Dockerfile: Dockerfile
+  # Define the functions section here
+  MyFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: hello-world/
+      Handler: handler.hello
+      Runtime: nodejs18.x
+      Events:
+        MyHttpApi:
+          Type: HttpApi
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
@@ -34,10 +47,19 @@ Outputs:
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
   HelloWorldApi:
     Description: "API Gateway endpoint URL for Prod stage for Hello World function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
+    Value: !Sub "https://${HelloWorldFunctionApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
   HelloWorldFunction:
     Description: "Hello World Lambda Function ARN"
     Value: !GetAtt HelloWorldFunction.Arn
   HelloWorldFunctionIamRole:
     Description: "Implicit IAM Role created for Hello World function"
     Value: !GetAtt HelloWorldFunctionRole.Arn
+  MyFunctionArn:
+    Description: "ARN of MyFunction"
+    Value: !GetAtt MyFunction.Arn
+  MyFunctionApi:
+    Description: "API of MyFunction"
+    Value: !Sub "https://${MyFunctionApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
+  MyFunctionIamRole:
+    Description: "Implicit IAM Role created for My function"
+    Value: !GetAtt MyFunctionRole.Arn

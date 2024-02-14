@@ -123,3 +123,5 @@ Next, you can use AWS Serverless Application Repository to deploy ready to use A
    1. All: `docker ps -a`
    2. Only the running ones: `docker ps`
    3. Run my container: `docker run --platform linux/amd64 -it helloworldfunction:nodejs18.x-v1`
+2. Invoke functions:
+   1. Pick specific functions: `sam local invoke MyFunction`
