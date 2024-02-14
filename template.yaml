@@ -21,8 +21,8 @@ Resources:
         HelloWorld:
           Type: Api
           Properties:
-            Path: /hello
-            Method: get
+            Path: /
+            Method: post
     Metadata:
       DockerTag: nodejs18.x-v1
       DockerContext: ./hello-world
