@@ -31,15 +31,20 @@ Resources:
   MyFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: hello-world/
+      CodeUri: hello-world/ #path to the function code
       Handler: handler.hello
       Runtime: nodejs18.x
       Events:
-        MyHttpApi:
+        MyGetFunction:
           Type: Api
           Properties:
-            Path: /myfunction
-            Method: ANY
+            Path: /myfunction/get
+            Method: GET
+        MyPostFunction:
+          Type: Api
+          Properties:
+            Path: /myfunction/post
+            Method: POST
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function

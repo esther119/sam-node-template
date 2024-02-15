@@ -128,6 +128,9 @@ Next, you can use AWS Serverless Application Repository to deploy ready to use A
 3. zip vs image
    1. I think the helloworld is using docker image, but myfunction is using zip images. What is the difference between the two?
 4. Functions
-   1. Helloworld function can do post:`https://0xbpy28l6l.execute-api.us-east-1.amazonaws.com/Prod/`
+   1. Helloworld function can do post:`https://0xbpy28l6l.execute-api.us-east-1.amazonaws.com/Prod/
    2. My functions: test succeed on aws but cannot curl it. Is my API correct? or I curl it incorrectly?
-5.
+5. Testing command
+   1. Testing lint: `cfn-lint template.yaml`
+   2. Testing locally: `sam local invoke {{your function name}}`
+   3. Testing local API: `sam start local-api`
